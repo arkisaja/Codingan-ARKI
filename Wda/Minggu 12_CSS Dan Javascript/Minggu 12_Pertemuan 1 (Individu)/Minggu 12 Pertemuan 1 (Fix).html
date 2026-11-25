@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerpusDigital - Perpustakaan Digital</title>
+    
+    <!-- 1. External CSS (tetap dipanggil) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 2. Internal CSS (Ditambahkan di dalam tag <head>) -->
+    <style>
+        /* Mengatur style global atau khusus halaman ini via Internal CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 span {
+            color: #007bff;
+        }
+
+        .eyebrow {
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .intro {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .book-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background-color: #222222;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="hero" id="beranda" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 40px 20px;">
+        <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto;">
+            <a class="brand" href="#beranda" style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: bold;">📚 PerpusDigital</a>
+
+            <div class="nav-links">
+                <!-- 3. Inline CSS (Gaya langsung di atribut style) -->
+                <a href="#beranda" style="color: white; margin-right: 15px; text-decoration: none;">Beranda</a>
+                <a href="#koleksi" style="color: white; margin-right: 15px; text-decoration: none;">Koleksi</a>
+                <a href="#tentang" style="color: white; text-decoration: none;">Tentang</a>
+            </div>
+        </nav>
+
+        <div class="hero-content" style="text-align: center; margin-top: 50px;">
+            <p class="eyebrow" style="color: #ffd700;">TEMUKAN PENGETAHUAN BARU</p>
+
+            <h1 style="font-size: 2.5rem; line-height: 1.2;">Jelajahi Dunia<br>
+                <span>Melalui Buku</span>
+            </h1>
+
+            <p class="hero-desc" style="max-width: 600px; margin: 15px auto; font-size: 1.1rem;">
+                Temukan bacaan favoritmu dan perluas wawasan
+                kapan saja, di mana saja.
+            </p>
+
+            <a class="btn" href="#koleksi" style="display: inline-block; background-color: #ffd700; color: #333; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 15px;">Lihat Koleksi</a>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main>
+
+        <!-- Tentang -->
+        <section class="intro" id="tentang">
+            <p class="eyebrow" style="color: #007bff;">SELAMAT DATANG</p>
+
+            <!-- Inline CSS diterapkan pada H2 sesuai contoh konsep dasar -->
+            <h2 style="color: navy; text-align: center;">Perpustakaan dalam Genggaman</h2>
+
+            <p style="max-width: 700px; margin: 10px auto; line-height: 1.6;">
+                PerpusDigital menyediakan pilihan buku dari
+                berbagai kategori untuk mendukung kegiatan
+                belajar, bekerja, dan mengembangkan minat baca.
+            </p>
+        </section>
+
+        <!-- Koleksi Buku -->
+        <section class="catalog" id="koleksi" style="max-width: 1100px; margin: 0 auto; padding: 40px 20px;">
+
+            <div class="section-heading" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px;">
+                <div>
+                    <p class="eyebrow" style="color: #007bff;">PILIHAN EDITOR</p>
+                    <h2 style="margin: 0;">Koleksi Populer</h2>
+                </div>
+
+                <span class="count" style="background-color: #e9ecef; padding: 5px 12px; border-radius: 15px; font-size: 0.9rem;">3 buku pilihan</span>
+            </div>
+
+            <div class="book-grid">
+
+                <!-- Buku 1 -->
+                <article class="book-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+                    <div class="book-cover cover-one" style="background-color: #4a90e2; color: white; padding: 30px 20px; text-align: center;">
+                        <span style="display: block; font-size: 1.5rem; opacity: 0.7;">01</span>
+                        <strong style="font-size: 1.3rem;">Belajar<br>Teknologi</strong><br>
+                        <small style="letter-spacing: 1px; font-size: 0.75rem;">ILMU KOMPUTER</small>
+                    </div>
+
+                    <div class="book-info" style="padding: 20px;">
+                        <h3>Dasar-Dasar Teknologi</h3>
+                        <p style="color: #666; font-size: 0.95rem;">
+                            Pengantar dunia teknologi dan perkembangannya.
+                        </p>
+                        <span class="tag" style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">Teknologi</span>
+                    </div>
+                </article>
+
+                <!-- Buku 2 -->
+                <article class="book-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+                    <div class="book-cover cover-two" style="background-color: #e94e77; color: white; padding: 30px 20px; text-align: center;">
+                        <span style="display: block; font-size: 1.5rem; opacity: 0.7;">02</span>
+                        <strong style="font-size: 1.3rem;">Ruang<br>Imajinasi</strong><br>
+                        <small style="letter-spacing: 1px; font-size: 0.75rem;">FIKSI</small>
+                    </div>
+
+                    <div class="book-info" style="padding: 20px;">
+                        <h3>Ruang Imajinasi</h3>
+                        <p style="color: #666; font-size: 0.95rem;">
+                            Kumpulan cerita untuk menemani waktu luang.
+                        </p>
+                        <span class="tag" style="background-color: #fce4ec; color: #c2185b; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">Novel</span>
+                    </div>
+                </article>
+
+                <!-- Buku 3 -->
+                <article class="book-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+                    <div class="book-cover cover-three" style="background-color: #2ab7ca; color: white; padding: 30px 20px; text-align: center;">
+                        <span style="display: block; font-size: 1.5rem; opacity: 0.7;">03</span>
+                        <strong style="font-size: 1.3rem;">Mulai<br>Produktif</strong><br>
+                        <small style="letter-spacing: 1px; font-size: 0.75rem;">PENGEMBANGAN DIRI</small>
+                    </div>
+
+                    <div class="book-info" style="padding: 20px;">
+                        <h3>Langkah Kecil</h3>
+                        <p style="color: #666; font-size: 0.95rem;">
+                            Panduan membangun kebiasaan positif.
+                        </p>
+                        <span class="tag" style="background-color: #e0f2f1; color: #00695c; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">Motivasi</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Ajakan -->
+        <section class="callout" style="background-color: #007bff; color: white; text-align: center; padding: 50px 20px; margin-top: 40px;">
+            <div>
+                <p class="eyebrow" style="color: #ffd700;">BACA LEBIH BANYAK</p>
+                <h2 style="color: white; margin-top: 10px;">Satu buku bisa membuka banyak peluang.</h2>
+            </div>
+
+            <a class="btn btn-light" href="mailto:perpusdigital@example.com" style="display: inline-block; background-color: white; color: #007bff; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 20px;">
+                Hubungi Kami
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 PerpusDigital. Dibuat untuk Praktikum CSS Minggu ke-12.</p>
+    </footer>
+
+</body>
+</html>

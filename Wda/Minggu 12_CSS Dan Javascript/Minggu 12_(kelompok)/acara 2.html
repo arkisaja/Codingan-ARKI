@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Manajemen Produk</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f9f9f9;
+      margin: 30px;
+    }
+    h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+    button {
+      background-color: #3a86ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #265df2;
+    }
+    #total {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📦 Aplikasi Manajemen Produk</h2>
+
+  <div>
+    <input type="text" id="namaProduk" placeholder="Nama produk">
+    <input type="number" id="hargaProduk" placeholder="Harga">
+    <button id="tambahBtn">Tambah Produk</button>
+    <button id="loadApiBtn">Ambil dari API</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama Produk</th>
+        <th>Harga (Rp)</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="tabelProduk"></tbody>
+  </table>
+
+  <p id="total">Total Harga: Rp 0</p>
+
+  <script>
+    let produkList = [
+      { nama: "Roti", harga: 10000 },
+      { nama: "Susu", harga: 15000 },
+      { nama: "Kopi", harga: 12000 }
+    ];
+
+    const tabelProduk = document.getElementById("tabelProduk");
+    const inputNama = document.getElementById("namaProduk");
+    const inputHarga = document.getElementById("hargaProduk");
+    const totalHargaEl = document.getElementById("total");
+
+    function tampilkanProduk() {
+      tabelProduk.innerHTML = "";
+      let total = 0;
+      produkList.forEach((item, index) => {
+        total += item.harga;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${item.nama}</td>
+          <td>${item.harga.toLocaleString("id-ID")}</td>
+          <td><button onclick="hapusProduk(${index})">Hapus</button></td>
+        `;
+        tabelProduk.appendChild(row);
+      });
+      totalHargaEl.textContent = "Total Harga: Rp " + total.toLocaleString("id-ID");
+    }
+
+    function hapusProduk(index) {
+      produkList.splice(index, 1);
+      tampilkanProduk();
+    }
+
+    document.getElementById("tambahBtn").addEventListener("click", () => {
+      const nama = inputNama.value;
+      const harga = parseInt(inputHarga.value);
+
+      if (nama && harga) {
+        produkList.push({ nama, harga });
+        inputNama.value = "";
+        inputHarga.value = "";
+        tampilkanProduk();
+      } else {
+        alert("Isi nama dan harga terlebih dahulu!");
+      }
+    });
+
+    document.getElementById("loadApiBtn").addEventListener("click", () => {
+      fetch("https://fakestoreapi.com/products?limit=3")
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(item => {
+            produkList.push({ nama: item.title.substring(0, 20), harga: Math.floor(item.price * 15000) });
+          });
+          tampilkanProduk();
+        })
+        .catch(err => console.error("Gagal memuat data:", err));
+    });
+
+    tampilkanProduk();
+  </script>
+</body>
+</html>

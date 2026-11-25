@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daftar Produk</title>
+</head>
+<body>
+  <h2> Daftar Produk</h2>
+  <ul id="produkList"></ul>
+  <input type="text" id="produkInput" placeholder="Tambah produk baru">
+  <button id="tambahBtn">Tambah</button>
+
+  <script>
+    let produk = ["Roti", "Susu", "Kopi"];
+
+    const list = document.getElementById("produkList");
+    const input = document.getElementById("produkInput");
+    const tombol = document.getElementById("tambahBtn");
+
+    function tampilkanProduk() {
+      list.innerHTML = "";
+      produk.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+
+    tombol.addEventListener("click", function() {
+      const baru = input.value;
+      if (baru !== "") {
+        produk.push(baru);
+        input.value = "";
+        tampilkanProduk();
+      }
+    });
+
+    tampilkanProduk();
+  </script>
+</body>
+</html>

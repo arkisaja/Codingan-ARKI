@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pencatat Pengeluaran Harian</title>
+</head>
+<body>
+
+    <h2>💰 Pencatat Pengeluaran Harian</h2>
+
+    <p>Masukkan nama kebutuhan dan jumlah pengeluaran.</p>
+
+    <input type="text" id="nama"
+    placeholder="Nama pengeluaran">
+
+    <input type="number" id="jumlah"
+    placeholder="Jumlah (Rp)">
+
+    <button id="tambah">Tambah Pengeluaran</button>
+
+    <ul id="daftar"></ul>
+
+    <h3>Total Pengeluaran: <span id="total">Rp0</span></h3>
+
+    <script>
+        const namaInput = document.getElementById("nama");
+        const jumlahInput = document.getElementById("jumlah");
+        const daftar = document.getElementById("daftar");
+        const totalTeks = document.getElementById("total");
+
+        let pengeluaran = [];
+
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                maximumFractionDigits: 0
+            }).format(angka);
+        }
+
+        function tampilkanPengeluaran() {
+            daftar.innerHTML = "";
+
+            let total = 0;
+
+            pengeluaran.forEach(item => {
+                const li = document.createElement("li");
+
+                li.textContent = item.nama + " - " +
+                    formatRupiah(item.jumlah);
+
+                daftar.appendChild(li);
+
+                total += item.jumlah;
+            });
+
+            totalTeks.textContent = formatRupiah(total);
+        }
+
+        document.getElementById("tambah")
+        .addEventListener("click", function() {
+
+            const nama = namaInput.value.trim();
+            const jumlah = Number(jumlahInput.value);
+
+            if (nama === "" || jumlah <= 0) {
+                alert("Isi nama dan jumlah pengeluaran dengan benar!");
+                return;
+            }
+
+            pengeluaran.push({
+                nama: nama,
+                jumlah: jumlah
+            });
+
+            namaInput.value = "";
+            jumlahInput.value = "";
+
+            tampilkanPengeluaran();
+        });
+
+    </script>
+
+</body>
+</html>
